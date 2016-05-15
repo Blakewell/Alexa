@@ -12,7 +12,8 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>a08c7774-7ed6-40f7-8167-870dc7b4fb11</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>app.js</StartupFile>
+    <StartupFile>
+    </StartupFile>
     <StartWebBrowser>False</StartWebBrowser>
     <SearchPath>
     </SearchPath>
@@ -31,10 +32,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AlexaSkill.js" />
-    <Compile Include="app.js" />
     <Compile Include="index.js" />
+    <Content Include="speechAssets\customSlotTypes\DAYS_OF_WEEK.txt" />
+    <Content Include="speechAssets\Intents.txt" />
     <Content Include="package.json" />
     <Content Include="README.md" />
+    <Content Include="speechAssets\Utterances.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="speechAssets\customSlotTypes\" />
+    <Folder Include="speechAssets\" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />

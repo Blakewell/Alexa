@@ -24,7 +24,13 @@ AskDadaHelper.prototype.eventHandlers.onLaunch = function (launchRequest, sessio
 AskDadaHelper.prototype.intentHandlers = {
 	"WhoseTurnForSongsIntent": function (intent, session, response) {		
 		
-		var family = ["Dada", "Mama", "Canaan", "Eden"];
+        var family = ["Dada", "Mama", "Canaan", "Eden"];
+
+        var daySlot = intent.slots.Day;
+        var dayName;
+        if (daySlot && daySlot.value){
+            dayName = daySlot.value.toLowerCase();
+        }
 
 		var todaysDate = new Date();
 		var epochDate = new Date(2016,1, 5);
@@ -42,29 +48,6 @@ AskDadaHelper.prototype.intentHandlers = {
         response.tellWithCard("Hello there!", "Greeter", "Hello there!");
     },
 
-    "AMAZON.StopIntent": function (intent, session, response) {
-        var speechOutput = "Goodbye";
-        response.tell(speechOutput);
-    },
-
-    "AMAZON.CancelIntent": function (intent, session, response) {
-        var speechOutput = "Goodbye";
-        response.tell(speechOutput);
-    },
-
-    "AMAZON.HelpIntent": function (intent, session, response) {
-        var speechText = "You can ask questions to dada such as, Whose turn is it for songs?";
-        var repromptText = "You can say things like, Is it my turn for songs?... Now, what can I help you with?";
-        var speechOutput = {
-            speech: speechText,
-            type: AlexaSkill.speechOutputType.PLAIN_TEXT
-        };
-        var repromptOutput = {
-            speech: repromptText,
-            type: AlexaSkill.speechOutputType.PLAIN_TEXT
-        };
-        response.ask(speechOutput, repromptOutput);
-    }
 };
 
 exports.handler = function (event, context) {

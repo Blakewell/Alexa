@@ -1,0 +1,15 @@
+﻿{ "intents": [   
+
+	{"intent": "WhoseTurnForSongsIntent",
+	
+		"slots": [
+	      {
+	        "name" : "DayOfWeek",
+	        "type": "DAYS_OF_WEEK"
+	      }
+	    ]
+	 }, 
+
+	{"intent": "HelloWorldIntent" }   
+  
+]}
