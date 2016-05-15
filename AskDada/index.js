@@ -26,7 +26,7 @@ AskDadaHelper.prototype.intentHandlers = {
 		
         var family = ["Dada", "Mama", "Canaan", "Eden"];
 
-        var daySlot = intent.slots.Day;
+        var daySlot = intent.slots.DayOfWeek;
         var dayName;
         if (daySlot && daySlot.value){
             dayName = daySlot.value.toLowerCase();
@@ -39,7 +39,12 @@ AskDadaHelper.prototype.intentHandlers = {
 		var numDaysSinceEpoch = Math.floor((todaysDate - epochDate) / msDay);
 		var idx = numDaysSinceEpoch % 4;
 
-		var speechText = "It is " + family[idx] + "s turn for songs"
+        var speechText = "";
+        if (dayName) {
+            speechText = "I'm not sure whose turn it is " + dayName;
+        } else {
+            speechText = "It is " + family[idx] + "s turn for songs";
+        }
 
         response.tellWithCard(speechText, "Whose Turn Is It?", speechText);
     },
