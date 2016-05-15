@@ -1,0 +1,10 @@
+{
+  "name": "ask-dada",
+  "version": "0.0.0",
+  "description": "AskDada",
+  "main": "app.js",
+  "author": {
+    "name": "blake",
+    "email": ""
+  }
+}
