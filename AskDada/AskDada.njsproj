@@ -30,7 +30,9 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AlexaSkill.js" />
     <Compile Include="app.js" />
+    <Compile Include="index.js" />
     <Content Include="package.json" />
     <Content Include="README.md" />
   </ItemGroup>
