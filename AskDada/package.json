@@ -4,7 +4,10 @@
   "description": "AskDada",
   "main": "app.js",
   "author": {
-    "name": "blake",
-    "email": ""
+    "name": "blake blackwell",
+    "email": "blakewell@gmail.com"
+  },
+  "dependencies": {
+    "mocha": "*"
   }
 }
