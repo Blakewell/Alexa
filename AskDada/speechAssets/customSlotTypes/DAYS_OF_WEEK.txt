@@ -1,9 +1,3 @@
-﻿Monday
-Tuesday
-Wednesday
-Thursday
-Friday
-Saturday
-Sunday
+﻿yesterday
+today
 tomorrow
-yesterday

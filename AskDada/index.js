@@ -2,6 +2,7 @@
 'use strict';
 
 var AlexaSkill = require('./AlexaSkill');
+var FamilyMemberHelper = require("./FamilyMemberHelper");
 
 var APP_ID =  undefined; //'amzn1.echo-sdk-ams.app.05c3799b-34b4-4fd8-9d1a-a8af9beb188a'; 
 
@@ -22,29 +23,22 @@ AskDadaHelper.prototype.eventHandlers.onLaunch = function (launchRequest, sessio
 };
 
 AskDadaHelper.prototype.intentHandlers = {
-	"WhoseTurnForSongsIntent": function (intent, session, response) {		
-		
-        var family = ["Dada", "Mama", "Canaan", "Eden"];
-
-        var daySlot = intent.slots.DayOfWeek;
-        var dayName;
-        if (daySlot && daySlot.value){
-            dayName = daySlot.value.toLowerCase();
+	"WhoseTurnForSongsIntent": function (intent, session, response) {
+        
+        var epochDateSlider = 0;
+        
+        if (intent.slots) {
+            var daySlot = intent.slots.DayOfWeek;
+            var day;
+            if (daySlot && daySlot.value){
+                day = daySlot.value.toLowerCase();
+            }
         }
-
-		var todaysDate = new Date();
-		var epochDate = new Date(2016,1, 5);
-		var msDay = 60*60*24*1000;
-
-		var numDaysSinceEpoch = Math.floor((todaysDate - epochDate) / msDay);
-		var idx = numDaysSinceEpoch % 4;
-
+        
+        var familyMember = FamilyMemberHelper.getFamilyMemberForDay(day, ["Dada", "Mama", "Canaan", "Eden"]);
+        
         var speechText = "";
-        if (dayName) {
-            speechText = "I'm not sure whose turn it is " + dayName;
-        } else {
-            speechText = "It is " + family[idx] + "s turn for songs";
-        }
+        speechText = "It is " + familyMember + "s turn for songs";
 
         response.tellWithCard(speechText, "Whose Turn Is It?", speechText);
     },
