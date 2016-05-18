@@ -5,4 +5,5 @@ WhoseTurnForSongsIntent Is it Edens turn for songs
 WhoseTurnForSongsIntent Is it Canaans turn for songs
 WhoseTurnForSongsIntent Is it Mamas turn for songs
 WhoseTurnForSongsIntent Whose turn is it for songs {DayOfWeek} 
+WhoseTurnForSongsIntent Whose turn for songs was it {DayOfWeek} 
 HelloWorldIntent say hello

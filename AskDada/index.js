@@ -26,19 +26,23 @@ AskDadaHelper.prototype.intentHandlers = {
 	"WhoseTurnForSongsIntent": function (intent, session, response) {
         
         var epochDateSlider = 0;
+        var tense = "is";
         
         if (intent.slots) {
             var daySlot = intent.slots.DayOfWeek;
             var day;
             if (daySlot && daySlot.value){
                 day = daySlot.value.toLowerCase();
+                if (day == "yesterday") {
+                    tense = "was";
+                }
             }
         }
         
         var familyMember = FamilyMemberHelper.getFamilyMemberForDay(day, ["Dada", "Mama", "Canaan", "Eden"]);
         
         var speechText = "";
-        speechText = "It is " + familyMember + "s turn for songs";
+        speechText = "It " + tense + " " + familyMember + "s turn for songs";
 
         response.tellWithCard(speechText, "Whose Turn Is It?", speechText);
     },

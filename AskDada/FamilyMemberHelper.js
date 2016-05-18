@@ -24,6 +24,6 @@ exports.getFamilyMemberForDay = function (day, familyMembers) {
         }
     }
         
-    var daysSinceEpoch = exports.getDaysSinceEpochDateTillToday(new Date(2016, 1, 1)) + epochDateSlider;
+    var daysSinceEpoch = exports.getDaysSinceEpochDateTillToday(new Date(2016, 1, 5)) + epochDateSlider;
     return exports.getFamilyMemberForDate(daysSinceEpoch, familyMembers);
 }
