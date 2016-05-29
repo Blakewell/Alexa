@@ -12,7 +12,7 @@ exports.getDaysSinceEpochDateTillToday = function (epochDate) {
 }
 
 exports.getLocalDate = function(date, utcOffset) {
-	return new Date(date.getTime() + utcOffset * 3600 * 1000).toUTCString().replace(/ GMT$/, "");	
+	return new Date(new Date(date.getTime() + utcOffset * 3600 * 1000).toUTCString().replace(/ GMT$/, ""));	
 }
 
 exports.getFamilyMemberForDay = function (day, familyMembers) {

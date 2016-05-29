@@ -4,10 +4,10 @@ var familyMemberHelper = require("../FamilyMemberHelper");
 describe('Family Member Helper', function() {
     it('DaysSinceEpochDate', function () {
         
-        var daysSinceEpochDateExpected = 4
+        var daysSinceEpochDateExpected = 4; 
         var todaysDate = new Date();
         
-        var epochDate = new Date(todaysDate.setDate(todaysDate.getDate() - daysSinceEpochDateExpected));
+        var epochDate = familyMemberHelper.getLocalDate(new Date(todaysDate.setDate(todaysDate.getDate() - daysSinceEpochDateExpected)),-6);
         
         var daysSinceEpochDateActual = familyMemberHelper.getDaysSinceEpochDateTillToday(epochDate);
         
