@@ -16,9 +16,7 @@ AskDadaHelper.prototype.constructor = AskDadaHelper;
 
 AskDadaHelper.prototype.eventHandlers.onLaunch = function (launchRequest, session, response) {
     var speechText = "Welcome to the Ask Dada Helper. You can ask a question like, Whose turn is it for songs ... Now, what can I help you with.";
-    // If the user either does not reply to the welcome message or says something that is not
-    // understood, they will be prompted again with this text.
-    var repromptText = "For instructions on what you can say, please say help me.";
+    var repromptText = "";
     response.ask(speechText, repromptText);
 };
 
@@ -28,9 +26,9 @@ AskDadaHelper.prototype.intentHandlers = {
         var epochDateSlider = 0;
         var tense = "is";
         
+        var day = "today";
         if (intent.slots) {
             var daySlot = intent.slots.DayOfWeek;
-            var day;
             if (daySlot && daySlot.value){
                 day = daySlot.value.toLowerCase();
                 if (day == "yesterday") {
@@ -42,7 +40,7 @@ AskDadaHelper.prototype.intentHandlers = {
         var familyMember = FamilyMemberHelper.getFamilyMemberForDay(day, ["Dada", "Mama", "Canaan", "Eden"]);
         
         var speechText = "";
-        speechText = "It " + tense + " " + familyMember + "s turn for songs";
+        speechText = "It " + tense + " " + familyMember + "s turn for songs " + day;
 
         response.tellWithCard(speechText, "Whose Turn Is It?", speechText);
     },

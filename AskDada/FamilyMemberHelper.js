@@ -5,10 +5,14 @@
 
 exports.getDaysSinceEpochDateTillToday = function (epochDate) {
 
-	var todaysDate = new Date();
+	var todaysDate = exports.getLocalDate(new Date(), -6); 
 	var msDay = 60*60*24*1000;
 
 	return Math.floor((todaysDate - epochDate) / msDay);
+}
+
+exports.getLocalDate = function(date, utcOffset) {
+	return new Date(date.getTime() + utcOffset * 3600 * 1000).toUTCString().replace(/ GMT$/, "");	
 }
 
 exports.getFamilyMemberForDay = function (day, familyMembers) {
@@ -24,6 +28,6 @@ exports.getFamilyMemberForDay = function (day, familyMembers) {
         }
     }
         
-    var daysSinceEpoch = exports.getDaysSinceEpochDateTillToday(new Date(2016, 1, 5)) + epochDateSlider;
+    var daysSinceEpoch = exports.getDaysSinceEpochDateTillToday(exports.getLocalDate(new Date(2016, 1, 5),-6)) + epochDateSlider;
     return exports.getFamilyMemberForDate(daysSinceEpoch, familyMembers);
 }
